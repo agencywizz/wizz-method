@@ -74,6 +74,13 @@ agents:
     team: wizz
     description: "Cria interfaces, landing pages e motion de alto nível roteando para premium-landing-ui-researcher, ui-ux-pro-max e motion-3d-director. Mostra o visual antes do código e resume cada entrega em linguagem fácil."
 
+  - code: wizz-qa
+    name: QA
+    title: Garantia de Qualidade
+    icon: "✅"
+    team: wizz
+    description: "Entra depois do dev: roda testes, gera E2E, revisão adversarial e confere acceptance criteria roteando para e2e-runner, adversarial-reviewer e code-reviewer. Reporta achados por gravidade em linguagem fácil."
+
   - code: wizz-copy
     name: Copy
     title: Copywriter

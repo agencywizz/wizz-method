@@ -42,6 +42,11 @@ description = "Codar, bug, feature, testes, arquitetura, banco, segurança, PRD"
 prompt = "Roteie para o agente de desenvolvimento adequado e invoque-o via a ferramenta Skill: 'bmad-agent-dev' (codar/bug/feature/testes), 'bmad-agent-architect' (arquitetura/banco/segurança), 'bmad-agent-pm' (PRD/escopo), 'bmad-agent-analyst' (pesquisa/brief) ou 'bmad-agent-tech-writer' (documentação). Todos já vêm personalizados em PT-BR pelos overrides Wizz."
 
 [[agent.menu]]
+code = "QA"
+description = "Testar, QA, E2E, revisão crítica (depois do dev)"
+prompt = "Roteie para wizz-qa (skill: wizz-qa)."
+
+[[agent.menu]]
 code = "DESIGN"
 description = "Design, UI, landing page, motion, 3D"
 prompt = "Roteie para wizz-designer (skill: wizz-designer)."

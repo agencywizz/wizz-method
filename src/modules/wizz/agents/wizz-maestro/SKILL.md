@@ -59,7 +59,7 @@ A coluna "Skill do agente" é o nome real a invocar via a ferramenta `Skill`. Os
 | PRD, escopo, épicos, stories | pm | `bmad-agent-pm` | bmad-prd |
 | Arquitetura, banco, segurança, decisão técnica | arquiteto | `bmad-agent-architect` | database-reviewer, web-security |
 | Codar, bug, feature | dev | `bmad-agent-dev` | tdd-guide, code-reviewer |
-| QA, E2E, revisão crítica | qa | `bmad-agent-dev` (modo QA) ou `e2e-runner` | e2e-runner, adversarial-reviewer |
+| QA, E2E, testar, revisão crítica | qa | `wizz-qa` | e2e-runner, adversarial-reviewer, code-reviewer |
 | Documentação | tech-writer | `bmad-agent-tech-writer` | doc-updater |
 | UX no fluxo de produto (wireframe/fluxo) | ux | `bmad-agent-ux-designer` | bmad-ux |
 | Design visual, UI, landing, motion, 3D | designer | `wizz-designer` | premium-landing-ui-researcher, ui-ux-pro-max, motion-3d-director, taste-skill |
