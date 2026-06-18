@@ -28,3 +28,8 @@ principles = [
 code = "DEEP"
 description = "Pesquisa profunda multi-fonte com verificação"
 prompt = "Invoque a skill GLOBAL 'deep-research' via a ferramenta Skill para uma pesquisa aprofundada e citada."
+
+[[agent.menu]]
+code = "MAP"
+description = "Entender um projeto/código existente rápido"
+prompt = "Para mapear um codebase existente: primeiro tente '/graphify query' (knowledge graph, mais barato). Se a skill 'gsd:map-codebase' estiver instalada, pode usá-la. Senão, faça você mesmo: liste a estrutura, identifique stack, entrypoints e fluxos principais, e resuma em PT-BR fácil onde está cada coisa."

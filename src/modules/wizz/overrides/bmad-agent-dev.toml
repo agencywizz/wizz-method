@@ -33,3 +33,8 @@ prompt = "Invoque a skill GLOBAL 'tdd-guide' via a ferramenta Skill (ou o agente
 code = "REV"
 description = "Revisão de código após implementar"
 prompt = "Invoque a skill GLOBAL 'code-reviewer' via a ferramenta Skill (ou o agente code-reviewer)."
+
+[[agent.menu]]
+code = "DBG"
+description = "Debugar um bug de forma metódica (causa raiz)"
+prompt = "Antes de qualquer fix: (1) reproduza o bug; (2) hipótese da causa raiz; (3) teste a hipótese com mudança mínima; (4) confirme a causa; (5) corrija e prove que sumiu. Não chute. Se 'superpowers:systematic-debugging' estiver instalada, pode usá-la; senão siga estes passos."

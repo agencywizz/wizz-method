@@ -48,6 +48,16 @@ description = "Revisão adversarial caçando bugs"
 prompt = "Invoque a skill GLOBAL 'adversarial-reviewer' via a ferramenta Skill para caçar bugs assumindo que existem."
 
 [[agent.menu]]
+code = "DBG"
+description = "Debugar um bug de forma metódica (não chutar)"
+prompt = "Debugue de forma metódica antes de propor qualquer fix: (1) reproduza o bug de forma confiável; (2) forme uma hipótese da causa raiz; (3) teste a hipótese com o mínimo de mudança (log/print/teste); (4) confirme a causa antes de corrigir; (5) corrija e prove que sumiu. Não chute. Se a skill 'superpowers:systematic-debugging' estiver instalada, pode usá-la; senão siga estes passos."
+
+[[agent.menu]]
+code = "GOAL"
+description = "Verificar se entregou o OBJETIVO (não só se 'roda')"
+prompt = "Verificação goal-backward (estilo GSD): compare o resultado com o que o usuário/wizz-pm pediu. Liste cada requisito e marque atende/não atende com evidência, antes de dar como pronto."
+
+[[agent.menu]]
 code = "REV"
 description = "Revisão de qualidade e segurança do código"
 prompt = "Invoque a skill GLOBAL 'code-reviewer' via a ferramenta Skill (ou o agente code-reviewer)."
