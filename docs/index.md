@@ -1,59 +1,59 @@
 ---
-title: Bem-vindo ao Wizz Method
-description: Método de agência orientado por IA, em PT-BR, com agentes especializados, fluxos guiados e planejamento adaptável
+title: Welcome to the Wizz Method
+description: AI-driven agency development method with specialized agents, guided workflows, and adaptive planning
 ---
 
-O **Wizz Method** é um método de desenvolvimento e produção de agência orientado por IA, em PT-BR. Ele acompanha o trabalho do início ao fim: da ideia e do planejamento até a implementação assistida por agentes. Oferece agentes especializados, fluxos guiados e planejamento que se ajusta à complexidade do projeto, seja uma correção pequena ou uma plataforma inteira.
+The **Wizz Method** is an AI-driven agency development and production method. It follows the work from start to finish: from idea and planning all the way through agent-assisted implementation. It provides specialized agents, guided workflows, and planning that adapts to your project's complexity, whether you're shipping a small fix or an entire platform.
 
-Se você já trabalha com assistentes de IA como Claude, Cursor ou GitHub Copilot, está pronto para começar.
+If you're comfortable working with AI assistants like Claude, Cursor, or GitHub Copilot, you're ready to get started.
 
-:::note[Fork independente do BMad Method]
-O Wizz Method é um fork independente do [BMad Method](https://github.com/bmad-code-org/BMAD-METHOD), mantido pela Wizz! comms. O motor continua o BMAD (creditado no arquivo `TRADEMARK.md` do repositório); a camada Wizz adiciona linguagem fácil em PT-BR, encerramento padrão (✅ o que fiz, ➡️ próximo passo, 🎯 comando) e roteamento via `wizz-maestro` para as skills da agência.
+:::note[Independent fork of the BMad Method]
+The Wizz Method is an independent fork of the [BMad Method](https://github.com/bmad-code-org/BMAD-METHOD), maintained by Wizz! comms. The engine is still BMAD (credited in the repository's `TRADEMARK.md`); the Wizz layer adds agency routing through `wizz-maestro`, a standardized closeout (✅ what I did, ➡️ next step, 🎯 command), and Portuguese-friendly defaults for the agency's skills.
 :::
 
-## Começando
+## Getting Started
 
-O jeito mais rápido de entender o método é experimentar.
+The fastest way to understand the method is to try it.
 
-- **[Primeiros passos](./tutorials/getting-started.md)**: instale e entenda como o Wizz Method funciona.
-- **[Mapa de fluxos](./reference/workflow-map.md)**: visão geral das fases, dos fluxos e da gestão de contexto.
+- **[Get started](./tutorials/getting-started.md)**: install and understand how the Wizz Method works.
+- **[Workflow map](./reference/workflow-map.md)**: an overview of the phases, workflows, and context management.
 
-:::tip[Só quer mergulhar?]
-Instale o Wizz Method e invoque o `wizz-maestro`. Ele lê seu pedido e despacha o agente certo com base no projeto e nos módulos instalados.
+:::tip[Just want to dive in?]
+Install the Wizz Method and invoke `wizz-maestro`. It reads your request and dispatches the right agent based on your project and installed modules.
 :::
 
-## Como usar esta documentação
+## How to Use These Docs
 
-Os docs estão organizados em quatro seções, conforme o que você quer fazer:
+These docs are organized into four sections based on what you're trying to do:
 
-| Seção             | Para quê                                                                                              |
-| ----------------- | ----------------------------------------------------------------------------------------------------- |
-| **Tutoriais**     | Orientado a aprender. Passo a passo para construir algo. Comece aqui se for novo.                     |
-| **Guias práticos**| Orientado a tarefas. Soluções para problemas específicos. "Como personalizo um agente?" mora aqui.    |
-| **Explicação**    | Orientado a entender. Mergulhos em conceitos e arquitetura. Leia quando quiser saber o porquê.        |
-| **Referência**    | Orientado a informação. Especificações técnicas de agentes, fluxos e configuração.                    |
+| Section           | Purpose                                                                                                    |
+| ----------------- | ---------------------------------------------------------------------------------------------------------- |
+| **Tutorials**     | Learning-oriented. Step-by-step guides that walk you through building something. Start here if you're new. |
+| **How-To Guides** | Task-oriented. Practical guides for solving specific problems. "How do I customize an agent?" lives here.  |
+| **Explanation**   | Understanding-oriented. Deep dives into concepts and architecture. Read when you want to know *why*.       |
+| **Reference**     | Information-oriented. Technical specifications for agents, workflows, and configuration.                   |
 
-## Expandir e personalizar
+## Expand and Customize
 
-Quer estender o Wizz Method com agentes, fluxos ou módulos próprios? A personalização da agência fica no módulo `wizz` (agentes, overrides em PT-BR e o `wizz-init`). Ajustes pessoais ficam em `_wizz/custom/`, que tem prioridade sobre os padrões do time.
+Want to extend the Wizz Method with your own agents, workflows, or modules? The agency customization lives in the `wizz` module (agents, overrides, and `wizz-init`). Personal tweaks go in `_wizz/custom/`, which takes precedence over the team defaults.
 
-## O que você vai precisar
+## What You'll Need
 
-O Wizz Method funciona com qualquer assistente de IA que aceite system prompts ou contexto de projeto. Opções populares:
+The Wizz Method works with any AI assistant that supports system prompts or project context. Popular options include:
 
-- **[Claude Code](https://code.claude.com)**: a CLI da Anthropic (recomendada).
-- **[Cursor](https://cursor.sh)**: editor de código com IA.
-- **[Codex CLI](https://github.com/openai/codex)**: agente de terminal da OpenAI.
+- **[Claude Code](https://code.claude.com)**: Anthropic's CLI (recommended).
+- **[Cursor](https://cursor.sh)**: AI-first code editor.
+- **[Codex CLI](https://github.com/openai/codex)**: OpenAI's terminal coding agent.
 
-Convém ter familiaridade com conceitos básicos de desenvolvimento (controle de versão, estrutura de projeto, fluxos ágeis). Nenhuma experiência prévia com sistemas de agentes é necessária. É para isso que esta documentação existe.
+You should be comfortable with basic development concepts (version control, project structure, agile workflows). No prior experience with agent systems is required. That's what these docs are for.
 
-## Comunidade
+## Community
 
-Tire dúvidas, mostre o que está construindo ou contribua:
+Ask questions, show what you're building, or contribute:
 
-- **[GitHub](https://github.com/wizzcomms/wizz-method)**: código-fonte, issues e contribuições.
-- **[Wizz! comms.](https://wizzcomms.com)**: a agência por trás do método.
+- **[GitHub](https://github.com/wizzcomms/wizz-method)**: source code, issues, and contributions.
+- **[Wizz! comms.](https://wizzcomms.com)**: the agency behind the method.
 
-## Próximo passo
+## Next Step
 
-Pronto para começar? **[Primeiros passos](./tutorials/getting-started.md)** e construa seu primeiro projeto.
+Ready to dive in? **[Get started](./tutorials/getting-started.md)** and build your first project.

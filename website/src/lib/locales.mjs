@@ -15,22 +15,6 @@ export const locales = {
     label: 'English',
     lang: 'en',
   },
-  'vi-vn': {
-    label: 'Tiếng Việt',
-    lang: 'vi-VN',
-  },
-  'zh-cn': {
-    label: '简体中文',
-    lang: 'zh-CN',
-  },
-  fr: {
-    label: 'Français',
-    lang: 'fr-FR',
-  },
-  cs: {
-    label: 'Čeština',
-    lang: 'cs-CZ',
-  },
 };
 
 /**

@@ -16,7 +16,7 @@ Use **Quick Dev** for bug fixes, refactorings, or small targeted changes that do
 
 :::note[Prerequisites]
 
-- Wizz Method installed (`npx bmad-method install`)
+- Wizz Method installed (`npx wizz-method install`)
 - An AI-powered IDE (Claude Code, Cursor, or similar)
   :::
 

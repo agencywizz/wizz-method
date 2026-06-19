@@ -11,7 +11,7 @@ This guide covers the essential workflow for onboarding to existing projects wit
 
 :::note[Prerequisites]
 
-- Wizz Method installed (`npx bmad-method install`)
+- Wizz Method installed (`npx wizz-method install`)
 - An existing codebase you want to work on
 - Access to an AI-powered IDE (Claude Code or Cursor)
   :::

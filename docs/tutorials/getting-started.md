@@ -22,7 +22,7 @@ Build software faster using AI-powered workflows with specialized agents that gu
   :::
 
 :::tip[The Easiest Path]
-**Install** → `npx bmad-method install`
+**Install** → `npx wizz-method install`
 **Ask** → `wizz-help what should I do first?`
 **Build** → Let Wizz-Help guide you workflow by workflow
 :::
@@ -94,7 +94,7 @@ Story counts are guidance, not definitions. Choose your track based on planning 
 Open a terminal in your project directory and run:
 
 ```bash
-npx bmad-method install
+npx wizz-method install
 ```
 
 If you want the newest prerelease build instead of the default release channel, use `npx bmad-method@next install`.
