@@ -55,7 +55,7 @@ Por fim, invoque o `wizz-maestro` e mande seu pedido.
 
 ## Documentação
 
-[docs.wizz-method.org](https://docs.wizz-method.org): tutoriais, guias, conceitos e referência.
+[method.wizzcomms.com](https://method.wizzcomms.com): tutoriais, guias, conceitos e referência.
 
 ## Licença
 

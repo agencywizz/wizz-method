@@ -19,7 +19,7 @@ Primeira versão do Wizz Method como projeto independente.
 ### Mudado
 
 - Rebrand completo do fork: nome do pacote, CLI (`wizz` / `wizz-method`), documentação, site e identidade visual passam a ser Wizz.
-- Domínio dos docs: `docs.wizz-method.org`.
+- Domínio dos docs: `method.wizzcomms.com`.
 
 ### Origem
 
