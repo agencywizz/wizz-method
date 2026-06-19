@@ -1,49 +1,54 @@
 /**
- * BMAD Method Documentation - Custom Styles for Starlight
- * Dark theme matching bmadcode.com Ghost blog
+ * Wizz Method Documentation - Custom Styles for Starlight
+ * Dark, premium theme for the Wizz! comms. brand.
  *
- * Design tokens from Ghost theme:
- * Background: #0a0a0a | Surface: #1a1a1a | Border: #262626
- * Accent: #3b82f6 | Gold: #d4a853 | Text: #fafafa/#a1a1a1/#666666
+ * Design tokens (Wizz brand):
+ * Background: #0D0D0D | Surface: #1A1A1A | Border: #262626
+ * Accent: #FF4500 (Wizz Orange) | Hover: #CC3700 | Text: #F0F0F0 / #A8A8A8 / #666666
  */
 
-/* Google Fonts - match Ghost blog typography */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+/* Google Fonts - Space Grotesk is the Wizz typeface */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* ============================================
    COLOR PALETTE - Light Mode
    ============================================ */
 :root {
   --ai-banner-height: 2.75rem;
-  --sl-nav-height: 9rem; /* Base nav (3.5rem) + two announcement banners (2.75rem each) */
+  --sl-nav-height: 6.25rem; /* Base nav (3.5rem) + one announcement banner (2.75rem) */
+
+  /* Wizz brand tokens (shared) */
+  --wizz-orange: #ff4500;
+  --wizz-orange-hover: #cc3700;
+  --wizz-orange-soft: rgba(255, 69, 0, 0.08);
 
   /* Full-width content - override Starlight's default 45rem/67.5rem */
   --sl-content-width: 65rem;
 
-  /* Primary accent colors - blue to match Ghost blog */
-  --sl-color-accent-low: #dbeafe;
-  --sl-color-accent: #2563eb;
-  --sl-color-accent-high: #1d4ed8;
+  /* Primary accent colors - Wizz Orange */
+  --sl-color-accent-low: rgba(255, 69, 0, 0.14);
+  --sl-color-accent: #ff4500;
+  --sl-color-accent-high: #cc3700;
 
-  /* Text colors */
-  --sl-color-white: #1e293b;
-  --sl-color-gray-1: #334155;
-  --sl-color-gray-2: #475569;
-  --sl-color-gray-3: #64748b;
-  --sl-color-gray-4: #94a3b8;
-  --sl-color-gray-5: #cbd5e1;
-  --sl-color-gray-6: #e2e8f0;
-  --sl-color-black: #f8fafc;
+  /* Text colors (light mode) */
+  --sl-color-white: #1a1a1a;
+  --sl-color-gray-1: #2e2e2e;
+  --sl-color-gray-2: #474747;
+  --sl-color-gray-3: #666666;
+  --sl-color-gray-4: #8a8a8a;
+  --sl-color-gray-5: #c9c9c9;
+  --sl-color-gray-6: #e5e5e5;
+  --sl-color-black: #fafafa;
 
   /* Font settings */
-  --sl-font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
-    Arial, sans-serif;
+  --sl-font: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
   --sl-font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
   --sl-text-base: 1rem;
   --sl-line-height: 1.7;
 
   /* Code highlighting */
-  --sl-color-bg-inline-code: rgba(59, 130, 246, 0.08);
+  --sl-color-bg-inline-code: var(--wizz-orange-soft);
 }
 
 /* ============================================
@@ -53,30 +58,30 @@
   /* Full-width content - override Starlight's default */
   --sl-content-width: 65rem;
 
-  /* Primary accent colors - blue to match Ghost blog */
-  --sl-color-accent-low: rgba(59, 130, 246, 0.12);
-  --sl-color-accent: #3b82f6;
-  --sl-color-accent-high: #60a5fa;
+  /* Primary accent colors - Wizz Orange (brighter on dark for contrast) */
+  --sl-color-accent-low: rgba(255, 69, 0, 0.14);
+  --sl-color-accent: #ff4500;
+  --sl-color-accent-high: #ff7a4d;
 
-  /* Background colors - match Ghost blog */
-  --sl-color-bg: #0a0a0a;
-  --sl-color-bg-nav: #0a0a0a;
-  --sl-color-bg-sidebar: #0a0a0a;
+  /* Background colors - Wizz dark */
+  --sl-color-bg: #0d0d0d;
+  --sl-color-bg-nav: #0d0d0d;
+  --sl-color-bg-sidebar: #0d0d0d;
   --sl-color-hairline-light: rgba(255, 255, 255, 0.06);
   --sl-color-hairline: #262626;
 
-  /* Text colors - match Ghost blog */
-  --sl-color-white: #fafafa;
-  --sl-color-gray-1: #e2e8f0;
-  --sl-color-gray-2: #a1a1a1;
-  --sl-color-gray-3: #94a3b8;
+  /* Text colors - Wizz dark */
+  --sl-color-white: #f0f0f0;
+  --sl-color-gray-1: #d6d6d6;
+  --sl-color-gray-2: #a8a8a8;
+  --sl-color-gray-3: #8a8a8a;
   --sl-color-gray-4: #666666;
-  --sl-color-gray-5: #475569;
+  --sl-color-gray-5: #3a3a3a;
   --sl-color-gray-6: #262626;
-  --sl-color-black: #0a0a0a;
+  --sl-color-black: #0d0d0d;
 
   /* Code highlighting */
-  --sl-color-bg-inline-code: rgba(59, 130, 246, 0.15);
+  --sl-color-bg-inline-code: rgba(255, 69, 0, 0.16);
 }
 
 /* ============================================
@@ -92,7 +97,7 @@
 .sl-markdown-content h6,
 .site-title,
 starlight-toc h2 {
-  font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
   letter-spacing: -0.02em;
 }
 
@@ -154,14 +159,14 @@ starlight-toc h2 {
 
 /* Active state - thin left accent bar */
 .sidebar-content a[aria-current='page'] {
-  background-color: rgba(59, 130, 246, 0.08);
+  background-color: rgba(255, 69, 0, 0.08);
   color: var(--sl-color-accent);
   border-left-color: var(--sl-color-accent);
   font-weight: 600;
 }
 
 :root[data-theme='dark'] .sidebar-content a[aria-current='page'] {
-  background-color: rgba(59, 130, 246, 0.1);
+  background-color: rgba(255, 69, 0, 0.12);
   color: var(--sl-color-accent-high);
   border-left-color: var(--sl-color-accent);
 }
@@ -298,7 +303,7 @@ header.header .header.sl-flex {
 .card:hover {
   transform: translateY(-3px);
   border-color: var(--sl-color-accent);
-  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+  box-shadow: 0 8px 24px rgba(255, 69, 0, 0.18);
 }
 
 :root[data-theme='dark'] .card {
@@ -308,10 +313,10 @@ header.header .header.sl-flex {
 }
 
 :root[data-theme='dark'] .card:hover {
-  border-color: #3b82f6;
+  border-color: #ff4500;
   box-shadow:
-    0 8px 32px rgba(59, 130, 246, 0.15),
-    0 0 0 1px rgba(59, 130, 246, 0.1);
+    0 8px 32px rgba(255, 69, 0, 0.2),
+    0 0 0 1px rgba(255, 69, 0, 0.12);
 }
 
 /* Starlight card grid */
@@ -334,7 +339,7 @@ header.header .header.sl-flex {
 }
 
 :root[data-theme='dark'] .sl-link-card:hover {
-  border-color: #3b82f6;
+  border-color: #ff4500;
 }
 
 /* ============================================
@@ -393,7 +398,7 @@ table {
 }
 
 :root[data-theme='dark'] table th {
-  background-color: rgba(59, 130, 246, 0.05);
+  background-color: rgba(255, 69, 0, 0.06);
 }
 
 :root[data-theme='dark'] table tr:nth-child(2n) {
@@ -403,7 +408,7 @@ table {
 /* Blockquotes */
 blockquote {
   border-left-color: var(--sl-color-accent);
-  background-color: rgba(59, 130, 246, 0.05);
+  background-color: rgba(255, 69, 0, 0.06);
   border-radius: 0 8px 8px 0;
   padding: 1rem 1.25rem;
 }
@@ -438,21 +443,21 @@ blockquote {
   color: #34d399;
 }
 
-/* Note aside */
+/* Note aside - Wizz Orange */
 .starlight-aside--note {
-  background-color: rgba(59, 130, 246, 0.08);
+  background-color: rgba(255, 69, 0, 0.08);
 }
 
 .starlight-aside--note .starlight-aside__title {
-  color: #2563eb;
+  color: #cc3700;
 }
 
 :root[data-theme='dark'] .starlight-aside--note {
-  background-color: rgba(59, 130, 246, 0.12);
+  background-color: rgba(255, 69, 0, 0.12);
 }
 
 :root[data-theme='dark'] .starlight-aside--note .starlight-aside__title {
-  color: #3b82f6;
+  color: #ff7a4d;
 }
 
 /* Caution aside */
@@ -529,7 +534,7 @@ blockquote {
    ROADMAP STYLES
    ============================================ */
 .roadmap-container {
-  --color-planned: #3b82f6;
+  --color-planned: #ff4500;
   --color-in-progress: #10b981;
   --color-exploring: #f59e0b;
   --color-bg-card: rgba(255, 255, 255, 0.03);
@@ -680,8 +685,8 @@ blockquote {
 }
 
 .roadmap-badge.planned {
-  background: rgba(59, 130, 246, 0.15);
-  color: #3b82f6;
+  background: rgba(255, 69, 0, 0.15);
+  color: #ff4500;
 }
 
 .roadmap-badge.exploring {
@@ -752,7 +757,7 @@ blockquote {
 .roadmap-future-card {
   padding: 1.5rem;
   border-radius: 12px;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(212, 168, 83, 0.05));
+  background: linear-gradient(135deg, rgba(255, 69, 0, 0.08), rgba(255, 122, 77, 0.05));
   border: 1px solid var(--color-border);
   transition: transform 0.2s ease;
   display: flex;

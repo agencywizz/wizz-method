@@ -1,12 +1,12 @@
 # Contributors
 
-BMad Core, BMad Method and BMad and Community BMad Modules are made possible by contributions from our community. We gratefully acknowledge everyone who has helped improve this project.
+O Wizz Method é mantido pela Wizz! comms. e construído sobre o motor do BMad Method. Agradecemos a todos que ajudaram a melhorar este projeto, e ao projeto original BMad Method, do qual este é um fork independente.
 
 ## How We Credit Contributors
 
 - **Git history** — Every contribution is preserved in the project's commit history
 - **Contributors badge** — See the dynamic contributors list on our [README](README.md)
-- **GitHub contributors graph** — Visual representation at <https://github.com/bmad-code-org/BMAD-METHOD/graphs/contributors>
+- **GitHub contributors graph** — Visual representation at <https://github.com/agencywizz/wizz-method/graphs/contributors>
 
 ## Becoming a Contributor
 
@@ -19,14 +19,14 @@ Anyone who submits a pull request that is merged becomes a contributor. Contribu
 - Code reviews
 - Helping others in discussions
 
-There are no minimum contribution requirements — whether it's a one-character typo fix or a major feature, we value all contributions.
+There are no minimum contribution requirements. Whether it's a one-character typo fix or a major feature, we value all contributions.
 
 ## Copyright
 
-The BMad Method project is copyrighted by BMad Code, LLC. Individual contributions are licensed under the same MIT License as the project. Contributors retain authorship credit through Git history and the contributors graph.
+O motor BMad Method é copyright de BMad Code, LLC, usado sob a licença MIT (ver [TRADEMARK.md](TRADEMARK.md)). As personalizações da camada Wizz são da Wizz! comms. Contribuições individuais são licenciadas sob a mesma licença MIT do projeto. O crédito de autoria fica preservado no histórico do Git e no contributors graph.
 
 ---
 
-**Thank you to everyone who has helped make BMad Method better!**
+**Obrigado a todos que ajudaram a melhorar o Wizz Method!**
 
 For contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).

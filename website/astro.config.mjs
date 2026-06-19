@@ -43,21 +43,17 @@ export default defineConfig({
       filter: (page) => !/\/404(\/|$)/.test(new URL(page).pathname),
     }),
     starlight({
-      title: 'BMAD Method',
+      title: 'Wizz Method',
       tagline: 'AI-driven agile development with specialized agents and workflows that scale from bug fixes to enterprise platforms.',
 
       // i18n: locale config from shared module (website/src/lib/locales.mjs)
       defaultLocale: 'root',
       locales,
 
-      favicon: '/favicon.ico',
+      favicon: '/wizz-icon-orange.svg',
 
       // Social links
-      social: [
-        { icon: 'discord', label: 'Discord', href: 'https://discord.gg/gk8jAdXWmj' },
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/bmad-code-org/BMAD-METHOD' },
-        { icon: 'youtube', label: 'YouTube', href: 'https://www.youtube.com/@BMadCode' },
-      ],
+      social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/agencywizz/wizz-method' }],
 
       // Show last updated timestamps
       lastUpdated: true,
@@ -68,7 +64,7 @@ export default defineConfig({
           tag: 'meta',
           attrs: {
             name: 'ai-terms',
-            content: `AI-optimized documentation: ${siteUrl}/llms-full.txt (plain text, ~100k tokens, complete BMAD reference). Index: ${siteUrl}/llms.txt`,
+            content: `AI-optimized documentation: ${siteUrl}/llms-full.txt (plain text, ~100k tokens, complete Wizz Method reference). Index: ${siteUrl}/llms.txt`,
           },
         },
         {
@@ -125,53 +121,6 @@ export default defineConfig({
           translations: { 'vi-VN': 'Tham chiếu', 'zh-CN': '参考', 'fr-FR': 'Référence', 'cs-CZ': 'Reference' },
           collapsed: true,
           autogenerate: { directory: 'reference' },
-        },
-        // TEA docs moved to standalone module site; keep BMM sidebar focused.
-        {
-          label: 'BMad Ecosystem',
-          translations: { 'vi-VN': 'Hệ sinh thái BMad', 'zh-CN': 'BMad 生态系统', 'fr-FR': 'Écosystème BMad', 'cs-CZ': 'Ekosystém BMad' },
-          collapsed: false,
-          items: [
-            {
-              label: 'BMad Builder',
-              translations: { 'vi-VN': 'BMad Builder', 'zh-CN': 'BMad 构建器', 'fr-FR': 'BMad Builder', 'cs-CZ': 'BMad Builder' },
-              link: 'https://bmad-builder-docs.bmad-method.org/',
-              attrs: { target: '_blank' },
-            },
-            {
-              label: 'Creative Intelligence Suite',
-              translations: {
-                'vi-VN': 'Bộ công cụ Trí tuệ Sáng tạo',
-                'zh-CN': '创意智能套件',
-                'fr-FR': "Suite d'Intelligence Créative",
-                'cs-CZ': 'Sada kreativní inteligence',
-              },
-              link: 'https://cis-docs.bmad-method.org/',
-              attrs: { target: '_blank' },
-            },
-            {
-              label: 'Game Dev Studio',
-              translations: {
-                'vi-VN': 'Xưởng phát triển Game',
-                'zh-CN': '游戏开发工作室',
-                'fr-FR': 'Studio de Développement de Jeux',
-                'cs-CZ': 'Herní vývojové studio',
-              },
-              link: 'https://game-dev-studio-docs.bmad-method.org/',
-              attrs: { target: '_blank' },
-            },
-            {
-              label: 'Test Architect (TEA)',
-              translations: {
-                'vi-VN': 'Kiến trúc sư Kiểm thử (TEA)',
-                'zh-CN': '测试架构师 (TEA)',
-                'fr-FR': 'Architecte de Tests (TEA)',
-                'cs-CZ': 'Testovací architekt (TEA)',
-              },
-              link: 'https://bmad-code-org.github.io/bmad-method-test-architecture-enterprise/',
-              attrs: { target: '_blank' },
-            },
-          ],
         },
       ],
 

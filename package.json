@@ -1,8 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "bmad-method",
-  "version": "6.8.0",
-  "description": "Breakthrough Method of Agile AI-driven Development",
+  "name": "wizz-method",
+  "version": "1.0.0",
+  "description": "Wizz Method — método de agência orientado por IA em PT-BR (fork independente do BMad Method)",
   "keywords": [
     "agile",
     "ai",
@@ -10,18 +10,20 @@
     "development",
     "methodology",
     "agents",
-    "bmad"
+    "wizz",
+    "agencywizz"
   ],
+  "homepage": "https://docs.wizz-method.org",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bmad-code-org/BMAD-METHOD.git"
+    "url": "git+https://github.com/agencywizz/wizz-method.git"
   },
   "license": "MIT",
-  "author": "Brian (BMad) Madison",
+  "author": "Wizz! comms. (agencywizz)",
   "main": "tools/installer/bmad-cli.js",
   "bin": {
-    "bmad": "tools/installer/bmad-cli.js",
-    "bmad-method": "tools/installer/bmad-cli.js"
+    "wizz": "tools/installer/bmad-cli.js",
+    "wizz-method": "tools/installer/bmad-cli.js"
   },
   "scripts": {
     "bmad:install": "node tools/installer/bmad-cli.js install",

@@ -1,14 +1,14 @@
-# Contributing to BMad
+# Contribuindo com o Wizz Method
 
-Thank you for considering contributing! We believe in **Human Amplification, Not Replacement** — bringing out the best thinking in both humans and AI through guided collaboration.
+Obrigado por considerar contribuir. Acreditamos em **amplificação humana, não substituição**: trazer o melhor pensamento de humanos e de IA por meio de colaboração guiada.
 
-💬 **Discord**: [Join our community](https://discord.gg/gk8jAdXWmj) for real-time discussions, questions, and collaboration.
+📨 **Contato**: abra uma [issue no GitHub](https://github.com/agencywizz/wizz-method/issues) ou escreva para <support@wizzcomms.com>.
 
 ---
 
-> **Before you write code: talk to us on [Discord](https://discord.gg/gk8jAdXWmj).**
+> **Antes de escrever código: fale com a gente** por [issue no GitHub](https://github.com/agencywizz/wizz-method/issues).
 >
-> If your change adds features, restructures code, or touches more than a couple of files, **confirm with a maintainer that it fits**. A large PR out of the blue has a high chance of being closed — regardless of effort invested. A five-minute conversation can save you hours.
+> Se a mudança adiciona features, reestrutura código ou toca mais que alguns arquivos, **confirme antes que ela faz sentido**. Um PR grande do nada tem alta chance de ser fechado, independente do esforço investido. Uma conversa de cinco minutos pode poupar horas.
 
 ---
 
@@ -37,11 +37,11 @@ BMad strengthens human-AI collaboration through specialized agents and guided wo
 
 1. **Search existing issues** — Use the GitHub issue search to check if your bug or feature has already been reported
 2. **Search closed issues** — Your issue may have been fixed or addressed previously
-3. **Check discussions** — Some conversations happen in [GitHub Discussions](https://github.com/bmad-code-org/BMAD-METHOD/discussions)
+3. **Check discussions** — Some conversations happen in [GitHub Discussions](https://github.com/agencywizz/wizz-method/discussions)
 
 ### Bug Reports
 
-After searching, if the bug is unreported, use the [bug report template](https://github.com/bmad-code-org/BMAD-METHOD/issues/new?template=bug_report.md) and include:
+After searching, if the bug is unreported, use the [bug report template](https://github.com/agencywizz/wizz-method/issues/new?template=bug_report.md) and include:
 
 - Clear description of the problem
 - Steps to reproduce
@@ -51,7 +51,7 @@ After searching, if the bug is unreported, use the [bug report template](https:/
 
 ### Feature Requests
 
-After searching, use the [feature request template](https://github.com/bmad-code-org/BMAD-METHOD/issues/new?template=feature_request.md) and explain:
+After searching, use the [feature request template](https://github.com/agencywizz/wizz-method/issues/new?template=feature_request.md) and explain:
 
 - What the feature is
 - Why it would benefit the BMad community
@@ -93,7 +93,7 @@ We will reject PRs that read like raw LLM output: bulk refactors nobody asked fo
 ### New to Pull Requests?
 
 1. **Fork** the repository
-2. **Clone** your fork: `git clone https://github.com/YOUR-USERNAME/bmad-method.git`
+2. **Clone** your fork: `git clone https://github.com/YOUR-USERNAME/wizz-method.git`
 3. **Create a branch**: `git checkout -b fix/description` or `git checkout -b feature/description`
 4. **Make changes** — keep them focused
 5. **Commit**: `git commit -m "fix: correct typo in README"`
@@ -167,9 +167,9 @@ Keep messages under 72 characters. Each commit = one logical change.
 
 ## Need Help?
 
-- 💬 **Discord**: [Join the community](https://discord.gg/gk8jAdXWmj)
-- 🐛 **Bugs**: Use the [bug report template](https://github.com/bmad-code-org/BMAD-METHOD/issues/new?template=bug_report.md)
-- 💡 **Features**: Use the [feature request template](https://github.com/bmad-code-org/BMAD-METHOD/issues/new?template=feature_request.md)
+- 📨 **Contato**: [issue no GitHub](https://github.com/agencywizz/wizz-method/issues) ou <support@wizzcomms.com>
+- 🐛 **Bugs**: Use the [bug report template](https://github.com/agencywizz/wizz-method/issues/new?template=bug_report.md)
+- 💡 **Features**: Use the [feature request template](https://github.com/agencywizz/wizz-method/issues/new?template=feature_request.md)
 
 ---
 

@@ -1,127 +1,64 @@
-![BMad Method](banner-bmad-method.png)
+![Wizz Method](banner-wizz-method.png)
 
-[![Version](https://img.shields.io/npm/v/bmad-method?color=blue&label=version)](https://www.npmjs.com/package/bmad-method)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D20.12.0-brightgreen)](https://nodejs.org)
-[![Python Version](https://img.shields.io/badge/python-%3E%3D3.10-blue?logo=python&logoColor=white)](https://www.python.org)
-[![uv](https://img.shields.io/badge/uv-package%20manager-blueviolet?logo=uv)](https://docs.astral.sh/uv/)
-[![Discord](https://img.shields.io/badge/Discord-Join%20Community-7289da?logo=discord&logoColor=white)](https://discord.gg/gk8jAdXWmj)
 
-**Build More Architect Dreams** — An AI-driven agile development module for the BMad Method Module Ecosystem, the best and most comprehensive Agile AI Driven Development framework that has true scale-adaptive intelligence that adjusts from bug fixes to enterprise systems.
+O **Wizz Method** é o método de agência da Wizz! comms., orientado por IA e operado em PT-BR. Linguagem fácil e resumida, sem floreio. Cada agente termina sempre com um bloco padrão: **✅ o que fiz**, **➡️ próximo passo**, **🎯 comando**.
 
-**100% free and open source.** No paywalls. No gated content. No gated Discord. We believe in empowering everyone, not just those who can pay for a gated community or courses.
+O ponto de entrada é o `wizz-maestro`: ele lê o pedido, descobre a área (dev, design, copy, SEO, growth, ads, memória) e despacha o agente certo, roteando para as ~80 skills globais.
 
-## Why the BMad Method?
+## Origem
 
-Traditional AI tools do the thinking for you, producing average results. BMad agents and facilitated workflows act as expert collaborators who guide you through a structured process to bring out your best thinking in partnership with the AI.
+O Wizz Method é um fork independente do [BMad Method](https://github.com/bmad-code-org/BMAD-METHOD), mantido pela Wizz. O motor interno continua sendo o BMAD: workflows, agentes de dev/produto e a arquitetura de skills. A camada Wizz adiciona marca, idioma PT-BR, roteamento e os 7 agentes de agência por cima desse motor. Crédito e agradecimento ao projeto original.
 
-- **AI Intelligent Help** — Invoke the `bmad-help` skill anytime for guidance on what's next
-- **Scale-Domain-Adaptive** — Automatically adjusts planning depth based on project complexity
-- **Structured Workflows** — Grounded in agile best practices across analysis, planning, architecture, and implementation
-- **Specialized Agents** — 12+ domain experts (PM, Architect, Developer, UX, and more)
-- **Party Mode** — Bring multiple agent personas into one session to collaborate and discuss
-- **Complete Lifecycle** — From brainstorming to deployment
+## Os 7 agentes Wizz
 
-[Learn more at **docs.bmad-method.org**](https://docs.bmad-method.org)
+| Agente | Faz | Rota para (skills globais) |
+|---|---|---|
+| 🧭 `wizz-maestro` | Lê o pedido e despacha o agente certo | todos os agentes wizz/bmad |
+| 🎨 `wizz-designer` | Design visual, landing, motion, 3D | premium-landing-ui-researcher, ui-ux-pro-max, motion-3d-director, taste-skill, ui-component-curator |
+| ✍️ `wizz-copy` | Copy, e-mail, headlines | copywriting, email-sequence, humanizer, copy-editing |
+| 🔍 `wizz-seo` | SEO tradicional e de IA | seo-audit, ai-seo, schema-markup, programmatic-seo, site-architecture |
+| 📈 `wizz-growth` | Marketing, CRO, lançamento, preço, churn | marketing-ideas, page-cro, launch-strategy, pricing-strategy, churn-prevention |
+| 📢 `wizz-ads` | Mídia paga | paid-ads, ad-creative, analytics-tracking, MCP meta-ads |
+| 🧠 `wizz-memoria` | Memória do projeto | cerebro |
 
----
+Os papéis de dev/produto reusam os agentes BMAD (Mary, John, Winston, Amelia, Sally, Paige), personalizados em PT-BR pelos overrides em `src/modules/wizz/overrides/`.
 
-## 🚀 What's Next for BMad?
-
-**V6 is here and we're just getting started!** The BMad Method is evolving rapidly with optimizations including Cross Platform Agent Team and Sub Agent inclusion, Skills Architecture, BMad Builder v1, Dev Loop Automation, and so much more in the works.
-
-**[📍 Check out the complete Roadmap →](https://docs.bmad-method.org/roadmap/)**
-
----
+A camada Wizz aplica a todos os agentes: encerramento padrão (✅/➡️/🎯), economia de token (graphify → cerebro → grep antes de ler arquivos), auto-load leve do cérebro na ativação e idioma PT-BR. Detalhes em [src/modules/wizz/README.md](src/modules/wizz/README.md).
 
 ## Quick Start
 
-**Prerequisites**: [Node.js](https://nodejs.org) v20.12+ · [Python](https://www.python.org) 3.10+ · [uv](https://docs.astral.sh/uv/)
+**Pré-requisitos**: [Node.js](https://nodejs.org) v20.12+ · [Python](https://www.python.org) 3.10+ · [uv](https://docs.astral.sh/uv/)
+
+Instale o método no seu projeto:
 
 ```bash
-npx bmad-method install
+npx wizz-method install
 ```
 
-> Want the newest prerelease build? Use `npx bmad-method@next install`. Expect higher churn than the default install.
+Siga os prompts do instalador, depois abra seu IDE de IA (Claude Code, Cursor, etc.) na pasta do projeto.
 
-Follow the installer prompts, then open your AI IDE (Claude Code, Cursor, etc.) in your project folder.
-
-**Non-Interactive Installation** (for CI/CD):
+**Instalação não-interativa** (para CI/CD):
 
 ```bash
-npx bmad-method install --directory /path/to/project --modules bmm --tools claude-code --yes
+npx wizz-method install --directory /caminho/do/projeto --modules bmm --tools claude-code --yes
 ```
 
-Override any module config option with `--set <module>.<key>=<value>` (repeatable). Run `--list-options [module]` to see locally-known official keys (built-in modules plus any external officials cached on this machine):
+Em seguida, rode a personalização Wizz (idioma PT-BR + overrides dos agentes BMAD). O comando é idempotente: pode rodar quantas vezes quiser.
 
 ```bash
-npx bmad-method install --yes \
-  --modules bmm --tools claude-code \
-  --set bmm.project_knowledge=research \
-  --set bmm.user_skill_level=expert
+node <caminho-do-wizz-method>/src/modules/wizz/scripts/wizz-init.mjs .
 ```
 
-[See all installation options](https://docs.bmad-method.org/how-to/non-interactive-installation/)
+Por fim, invoque o `wizz-maestro` e mande seu pedido.
 
-> **Not sure what to do?** Ask `bmad-help` — it tells you exactly what's next and what's optional. You can also ask questions like `bmad-help I just finished the architecture, what do I do next?`
+## Documentação
 
-## Modules
+[docs.wizz-method.org](https://docs.wizz-method.org): tutoriais, guias, conceitos e referência.
 
-BMad Method extends with official modules for specialized domains. Available during installation or anytime after.
+## Licença
 
-| Module                                                                                                            | Purpose                                           |
-| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
-| **[BMad Method (BMM)](https://github.com/bmad-code-org/BMAD-METHOD)**                                             | Core framework with 34+ workflows                 |
-| **[BMad Builder (BMB)](https://github.com/bmad-code-org/bmad-builder)**                                           | Create custom BMad agents and workflows           |
-| **[Test Architect (TEA)](https://github.com/bmad-code-org/bmad-method-test-architecture-enterprise)**             | Risk-based test strategy and automation           |
-| **[Game Dev Studio (BMGD)](https://github.com/bmad-code-org/bmad-module-game-dev-studio)**                        | Game development workflows (Unity, Unreal, Godot) |
-| **[Creative Intelligence Suite (CIS)](https://github.com/bmad-code-org/bmad-module-creative-intelligence-suite)** | Innovation, brainstorming, design thinking        |
+Licença MIT, veja [LICENSE](LICENSE) para detalhes.
 
-## Web Bundles
-
-V4 shipped web bundles. V6 brings them back, new and improved.
-
-Web bundles package selected BMad skills for installation as **Google Gemini Gems** and **ChatGPT Custom GPTs**. Use them to do the upfront planning work (brainstorming, product briefs, PRDs, PRFAQs, UX specs, market and industry research) in your web LLM subscription, then bring the polished artifacts into your IDE for implementation. Planning runs on a flat-rate subscription instead of metered IDE tokens, which is a meaningful cost saver on longer engagements. Choose the best model available to you in Gemini or ChatGPT.
-
-Current shelf: brainstorming, product brief, PRFAQ, PRD, UX, market & industry research.
-
-**Browse and install at [bmadcode.com/web-bundles](https://bmadcode.com/web-bundles/)**. One card per bundle, inline install steps for Gemini and ChatGPT, one-click ZIP download. See [the web bundles guide](https://docs.bmad-method.org/explanation/web-bundles/) for the concept.
-
-## Documentation
-
-[BMad Method Docs Site](https://docs.bmad-method.org) — Tutorials, guides, concepts, and reference
-
-**Quick links:**
-
-- [Getting Started Tutorial](https://docs.bmad-method.org/tutorials/getting-started/)
-- [Upgrading from Previous Versions](https://docs.bmad-method.org/how-to/upgrade-to-v6/)
-- [Test Architect Documentation](https://bmad-code-org.github.io/bmad-method-test-architecture-enterprise/)
-
-## Community
-
-- [Discord](https://discord.gg/gk8jAdXWmj) — Get help, share ideas, collaborate
-- [YouTube](https://youtube.com/@BMadCode) — Tutorials, master class, and more
-- [X / Twitter](https://x.com/BMadCode)
-- [Website](https://bmadcode.com)
-- [GitHub Issues](https://github.com/bmad-code-org/BMAD-METHOD/issues) — Bug reports and feature requests
-- [Discussions](https://github.com/bmad-code-org/BMAD-METHOD/discussions) — Community conversations
-
-## Support BMad
-
-BMad is free for everyone and always will be. Star this repo, [buy me a coffee](https://buymeacoffee.com/bmad), or email <contact@bmadcode.com> for corporate sponsorship.
-
-## Contributing
-
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-## License
-
-MIT License — see [LICENSE](LICENSE) for details.
-
----
-
-**BMad** and **BMAD-METHOD** are trademarks of BMad Code, LLC. See [TRADEMARK.md](TRADEMARK.md) for details.
-
-[![Contributors](https://contrib.rocks/image?repo=bmad-code-org/BMAD-METHOD)](https://github.com/bmad-code-org/BMAD-METHOD/graphs/contributors)
-
-See [CONTRIBUTORS.md](CONTRIBUTORS.md) for contributor information.
+**BMad** e **BMAD-METHOD** são marcas da BMad Code, LLC. **Wizz Method** é marca própria da Wizz! comms. A licença MIT cobre apenas o código. Veja [TRADEMARK.md](TRADEMARK.md).

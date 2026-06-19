@@ -1,6 +1,6 @@
-# BMAD-METHOD
+# Wizz Method
 
-Open source framework for structured, agent-assisted software delivery.
+Método de agência orientado por IA para entrega de software estruturada e assistida por agentes. Fork independente do BMad Method (ver TRADEMARK.md).
 
 ## Rules
 

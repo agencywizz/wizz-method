@@ -1,60 +1,59 @@
 ---
-title: Welcome to the BMad Method
-description: AI-driven development framework with specialized agents, guided workflows, and intelligent planning
+title: Bem-vindo ao Wizz Method
+description: Método de agência orientado por IA, em PT-BR, com agentes especializados, fluxos guiados e planejamento adaptável
 ---
 
-The BMad Method (**B**uild **M**ore **A**rchitect **D**reams) is an AI-driven development framework module within the BMad Method Ecosystem that helps you build software through the whole process from ideation and planning all the way through agentic implementation. It provides specialized AI agents, guided workflows, and intelligent planning that adapts to your project's complexity, whether you're fixing a bug or building an enterprise platform.
+O **Wizz Method** é um método de desenvolvimento e produção de agência orientado por IA, em PT-BR. Ele acompanha o trabalho do início ao fim: da ideia e do planejamento até a implementação assistida por agentes. Oferece agentes especializados, fluxos guiados e planejamento que se ajusta à complexidade do projeto, seja uma correção pequena ou uma plataforma inteira.
 
-If you're comfortable working with AI coding assistants like Claude, Cursor, or GitHub Copilot, you're ready to get started.
+Se você já trabalha com assistentes de IA como Claude, Cursor ou GitHub Copilot, está pronto para começar.
 
-:::note[🚀 V6 is Here and We're Just Getting Started!]
-Skills Architecture, BMad Builder v1, Dev Loop Automation, and so much more in the works. **[Check out the Roadmap →](/roadmap/)**
+:::note[Fork independente do BMad Method]
+O Wizz Method é um fork independente do [BMad Method](https://github.com/bmad-code-org/BMAD-METHOD), mantido pela Wizz! comms. O motor continua o BMAD (creditado no arquivo `TRADEMARK.md` do repositório); a camada Wizz adiciona linguagem fácil em PT-BR, encerramento padrão (✅ o que fiz, ➡️ próximo passo, 🎯 comando) e roteamento via `wizz-maestro` para as skills da agência.
 :::
 
-## New Here? Start with a Tutorial
+## Começando
 
-The fastest way to understand BMad is to try it.
+O jeito mais rápido de entender o método é experimentar.
 
-- **[Get Started with BMad](./tutorials/getting-started.md)** — Install and understand how BMad works
-- **[Workflow Map](./reference/workflow-map.md)** — Visual overview of BMM phases, workflows, and context management
+- **[Primeiros passos](./tutorials/getting-started.md)**: instale e entenda como o Wizz Method funciona.
+- **[Mapa de fluxos](./reference/workflow-map.md)**: visão geral das fases, dos fluxos e da gestão de contexto.
 
-:::tip[Just Want to Dive In?]
-Install BMad and use the `bmad-help` skill — it will guide you through everything based on your project and installed modules.
+:::tip[Só quer mergulhar?]
+Instale o Wizz Method e invoque o `wizz-maestro`. Ele lê seu pedido e despacha o agente certo com base no projeto e nos módulos instalados.
 :::
 
-## How to Use These Docs
+## Como usar esta documentação
 
-These docs are organized into four sections based on what you're trying to do:
+Os docs estão organizados em quatro seções, conforme o que você quer fazer:
 
-| Section           | Purpose                                                                                                    |
-| ----------------- | ---------------------------------------------------------------------------------------------------------- |
-| **Tutorials**     | Learning-oriented. Step-by-step guides that walk you through building something. Start here if you're new. |
-| **How-To Guides** | Task-oriented. Practical guides for solving specific problems. "How do I customize an agent?" lives here.  |
-| **Explanation**   | Understanding-oriented. Deep dives into concepts and architecture. Read when you want to know *why*.       |
-| **Reference**     | Information-oriented. Technical specifications for agents, workflows, and configuration.                   |
+| Seção             | Para quê                                                                                              |
+| ----------------- | ----------------------------------------------------------------------------------------------------- |
+| **Tutoriais**     | Orientado a aprender. Passo a passo para construir algo. Comece aqui se for novo.                     |
+| **Guias práticos**| Orientado a tarefas. Soluções para problemas específicos. "Como personalizo um agente?" mora aqui.    |
+| **Explicação**    | Orientado a entender. Mergulhos em conceitos e arquitetura. Leia quando quiser saber o porquê.        |
+| **Referência**    | Orientado a informação. Especificações técnicas de agentes, fluxos e configuração.                    |
 
-## Expand and Customize
+## Expandir e personalizar
 
-Want to expand BMad with your own agents, workflows, or modules? The **[BMad Builder](https://bmad-builder-docs.bmad-method.org/)** provides the framework and tools for creating custom extensions, whether you're adding new capabilities to BMad or building entirely new modules from scratch.
+Quer estender o Wizz Method com agentes, fluxos ou módulos próprios? A personalização da agência fica no módulo `wizz` (agentes, overrides em PT-BR e o `wizz-init`). Ajustes pessoais ficam em `_bmad/custom/`, que tem prioridade sobre os padrões do time.
 
-## What You'll Need
+## O que você vai precisar
 
-BMad works with any AI coding assistant that supports custom system prompts or project context. Popular options include:
+O Wizz Method funciona com qualquer assistente de IA que aceite system prompts ou contexto de projeto. Opções populares:
 
-- **[Claude Code](https://code.claude.com)** — Anthropic's CLI tool (recommended)
-- **[Cursor](https://cursor.sh)** — AI-first code editor
-- **[Codex CLI](https://github.com/openai/codex)** — OpenAI's terminal coding agent
+- **[Claude Code](https://code.claude.com)**: a CLI da Anthropic (recomendada).
+- **[Cursor](https://cursor.sh)**: editor de código com IA.
+- **[Codex CLI](https://github.com/openai/codex)**: agente de terminal da OpenAI.
 
-You should be comfortable with basic software development concepts like version control, project structure, and agile workflows. No prior experience with BMad-style agent systems is required—that's what these docs are for.
+Convém ter familiaridade com conceitos básicos de desenvolvimento (controle de versão, estrutura de projeto, fluxos ágeis). Nenhuma experiência prévia com sistemas de agentes é necessária. É para isso que esta documentação existe.
 
-## Join the Community
+## Comunidade
 
-Get help, share what you're building, or contribute to BMad:
+Tire dúvidas, mostre o que está construindo ou contribua:
 
-- **[Discord](https://discord.gg/gk8jAdXWmj)** — Chat with other BMad users, ask questions, share ideas
-- **[GitHub](https://github.com/bmad-code-org/BMAD-METHOD)** — Source code, issues, and contributions
-- **[YouTube](https://www.youtube.com/@BMadCode)** — Video tutorials and walkthroughs
+- **[GitHub](https://github.com/agencywizz/wizz-method)**: código-fonte, issues e contribuições.
+- **[Wizz! comms.](https://wizzcomms.com)**: a agência por trás do método.
 
-## Next Step
+## Próximo passo
 
-Ready to dive in? **[Get Started with BMad](./tutorials/getting-started.md)** and build your first project.
+Pronto para começar? **[Primeiros passos](./tutorials/getting-started.md)** e construa seu primeiro projeto.
