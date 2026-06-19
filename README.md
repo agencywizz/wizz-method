@@ -1,17 +1,18 @@
 ![Wizz Method](banner-wizz-method.png)
 
+# Wizz Method
+
+**O método de agência orientado por IA, em português.** Um maestro lê seu pedido, descobre a área e chama o agente certo. Você fala normal, ele organiza o trabalho.
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D20.12.0-brightgreen)](https://nodejs.org)
+[![npm](https://img.shields.io/npm/v/wizz-method?color=FF4500&label=wizz-method)](https://www.npmjs.com/package/wizz-method)
 
-O **Wizz Method** é o método de agência da Wizz! comms., orientado por IA e operado em PT-BR. Linguagem fácil e resumida, sem floreio. Cada agente termina sempre com um bloco padrão: **✅ o que fiz**, **➡️ próximo passo**, **🎯 comando**.
+Cansado de reexplicar o contexto a cada conversa com a IA? O Wizz Method dá ao seu time uma estrutura fixa: agentes especializados (dev, design, copy, SEO, growth, ads, memória), linguagem fácil e resumida, e um encerramento padrão em toda resposta (**✅ o que fiz**, **➡️ próximo passo**, **🎯 comando**). Tudo em PT-BR, dentro do seu assistente de IA favorito.
 
-O ponto de entrada é o `wizz-maestro`: ele lê o pedido, descobre a área (dev, design, copy, SEO, growth, ads, memória) e despacha o agente certo, roteando para as ~80 skills globais.
+O ponto de entrada é um só. Invoque o `wizz-maestro`, mande o pedido, ele despacha para quem resolve.
 
-## Origem
-
-O Wizz Method é um fork independente do [BMad Method](https://github.com/bmad-code-org/BMAD-METHOD), mantido pela Wizz. O motor interno continua sendo o BMAD: workflows, agentes de dev/produto e a arquitetura de skills. A camada Wizz adiciona marca, idioma PT-BR, roteamento e os 7 agentes de agência por cima desse motor. Crédito e agradecimento ao projeto original.
-
-## Os 7 agentes Wizz
+## Os 7 agentes
 
 | Agente | Faz | Rota para (skills globais) |
 |---|---|---|
@@ -23,9 +24,9 @@ O Wizz Method é um fork independente do [BMad Method](https://github.com/bmad-c
 | 📢 `wizz-ads` | Mídia paga | paid-ads, ad-creative, analytics-tracking, MCP meta-ads |
 | 🧠 `wizz-memoria` | Memória do projeto | cerebro |
 
-Os papéis de dev/produto reusam os agentes BMAD (Mary, John, Winston, Amelia, Sally, Paige), personalizados em PT-BR pelos overrides em `src/modules/wizz/overrides/`.
+Os papéis de dev e produto reusam os agentes BMAD (Mary, John, Winston, Amelia, Sally, Paige), personalizados em PT-BR pelos overrides em `src/modules/wizz/overrides/`.
 
-A camada Wizz aplica a todos os agentes: encerramento padrão (✅/➡️/🎯), economia de token (graphify → cerebro → grep antes de ler arquivos), auto-load leve do cérebro na ativação e idioma PT-BR. Detalhes em [src/modules/wizz/README.md](src/modules/wizz/README.md).
+A camada Wizz vale para todos os agentes: encerramento padrão (✅/➡️/🎯), economia de token (graphify, depois cérebro, depois grep antes de abrir arquivos), auto-load leve do cérebro na ativação e idioma à sua escolha. Detalhes em [src/modules/wizz/README.md](src/modules/wizz/README.md).
 
 ## Quick Start
 
@@ -37,23 +38,28 @@ Instale o método no seu projeto:
 npx wizz-method install
 ```
 
-Siga os prompts do instalador, depois abra seu IDE de IA (Claude Code, Cursor, etc.) na pasta do projeto.
+Siga os prompts, depois abra seu IDE de IA (Claude Code, Cursor, etc.) na pasta do projeto.
 
-**Instalação não-interativa** (para CI/CD):
-
-```bash
-npx wizz-method install --directory /caminho/do/projeto --modules bmm --tools claude-code --yes
-```
-
-Em seguida, rode a personalização Wizz (escolha do idioma + overrides dos agentes BMAD). O comando é idempotente: pode rodar quantas vezes quiser.
+Em seguida, rode a personalização Wizz. Ela pergunta o idioma de comunicação dos agentes e aplica os overrides PT-BR. É idempotente: pode rodar quantas vezes quiser.
 
 ```bash
 node <caminho-do-wizz-method>/src/modules/wizz/scripts/wizz-init.mjs .
 ```
 
-Ele pergunta o idioma de comunicação dos agentes. Para CI ou modo não-interativo, passe `--lang "English"` (ou a variável `WIZZ_LANG`); sem TTY o padrão é "Português (BR)".
-
 Por fim, invoque o `wizz-maestro` e mande seu pedido.
+
+**Instalação não-interativa** (para CI/CD):
+
+```bash
+npx wizz-method install --directory /caminho/do/projeto --modules bmm --tools claude-code --yes
+node <caminho-do-wizz-method>/src/modules/wizz/scripts/wizz-init.mjs . --lang "English"
+```
+
+Sem TTY, o idioma padrão é "Português (BR)". Use `--lang` ou a variável `WIZZ_LANG` para definir outro.
+
+## Origem
+
+O Wizz Method é um fork independente do [BMad Method](https://github.com/bmad-code-org/BMAD-METHOD), mantido pela Wizz! comms. O motor continua o BMAD: workflows, agentes de dev e produto e a arquitetura de skills. A camada Wizz adiciona marca, idioma, roteamento e os 7 agentes de agência por cima desse motor. Crédito e agradecimento ao projeto original.
 
 ## Documentação
 
