@@ -134,26 +134,26 @@ async function checkPythonEnvironment({ nonInteractive = false } = {}) {
   const status = classifyPython(detected ? detected.version : null);
 
   if (status === 'full' && detected.isRuntimeCommand) {
-    await prompts.log.success(`Python ${detected.version.raw} detected (${detected.command}) — all BMAD features supported.`);
+    await prompts.log.success(`Python ${detected.version.raw} detected (${detected.command}) — all Wizz features supported.`);
     return { status, detected };
   }
 
   if (detected && !detected.isRuntimeCommand) {
     await prompts.log.warn(
-      `Python ${detected.version.raw} found via \`${detected.command}\`, but BMAD scripts invoke \`python3\`, which is not on PATH.\n` +
+      `Python ${detected.version.raw} found via \`${detected.command}\`, but Wizz scripts invoke \`python3\`, which is not on PATH.\n` +
         `Python-powered features (memlog session memory, TOML config resolution) won't run until \`python3\` resolves —\n` +
         `add a python3 alias/shim, or reinstall Python with the python3 launcher enabled.`,
     );
   } else if (status === 'partial') {
     await prompts.log.warn(
-      `Python ${detected.version.raw} detected (${detected.command}) — BMAD's TOML config tools need Python 3.11+ (stdlib tomllib).\n` +
+      `Python ${detected.version.raw} detected (${detected.command}) — Wizz's TOML config tools need Python 3.11+ (stdlib tomllib).\n` +
         `Works: memlog session memory. Won't work: config/customization resolution scripts.`,
     );
   } else {
     const found =
       status === 'unsupported' ? `Python ${detected.version.raw} detected (${detected.command}) — too old.` : 'No Python found on PATH.';
     await prompts.log.warn(
-      `${found} BMAD installs fine without it, but Python-powered features\n` +
+      `${found} Wizz installs fine without it, but Python-powered features\n` +
         `(memlog session memory, TOML config resolution) won't run until Python 3.11+ is available.`,
     );
   }
@@ -165,12 +165,12 @@ async function checkPythonEnvironment({ nonInteractive = false } = {}) {
   }
 
   const choice = await prompts.select({
-    message: "BMAD's Python-powered features won't work yet. How do you want to proceed?",
+    message: "Wizz's Python-powered features won't work yet. How do you want to proceed?",
     choices: [
       {
         name: 'Continue install',
         value: 'continue',
-        hint: 'BMAD works without Python — you can fix Python later, no reinstall needed',
+        hint: 'Wizz works without Python — you can fix Python later, no reinstall needed',
       },
       {
         name: 'Quit and fix Python first',

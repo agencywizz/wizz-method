@@ -238,7 +238,7 @@ class UI {
       }
 
       // Common actions
-      choices.push({ name: 'Modify BMAD Installation', value: 'update' });
+      choices.push({ name: 'Modify Wizz Installation', value: 'update' });
 
       // Check if action is provided via command-line
       if (options.action) {
@@ -631,9 +631,9 @@ class UI {
             '--tools is required for non-interactive install (--yes / -y) when no tools are previously configured.',
             '',
             'Common: claude-code, cursor, copilot, windsurf, cline',
-            'See all supported tools: bmad-method install --list-tools',
+            'See all supported tools: wizz install --list-tools',
             '',
-            'Example: bmad-method install --modules bmm --tools claude-code -y',
+            'Example: wizz install --modules bmm --tools claude-code -y',
           ].join('\n'),
         );
         err.expected = true;
@@ -1047,7 +1047,7 @@ class UI {
         await prompts.log.info('LOCAL MODULE: Pointing directly at local source (changes take effect on reinstall).');
       } else {
         await prompts.log.warn(
-          'UNVERIFIED MODULE: This module has not been reviewed by the BMad team.\n' + '  Only install modules from sources you trust.',
+          'UNVERIFIED MODULE: This module has not been reviewed by the Wizz team.\n' + '  Only install modules from sources you trust.',
         );
       }
 
@@ -1362,7 +1362,7 @@ class UI {
           const hasBmadInstall =
             (await fs.pathExists(bmadResult.bmadDir)) && (await fs.pathExists(path.join(bmadResult.bmadDir, '_config', 'manifest.yaml')));
 
-          const bmadNote = hasBmadInstall ? ` including existing BMAD installation (${path.basename(bmadResult.bmadDir)})` : '';
+          const bmadNote = hasBmadInstall ? ` including existing Wizz installation (${path.basename(bmadResult.bmadDir)})` : '';
           await prompts.log.message(`Directory exists and contains ${files.length} item(s)${bmadNote}`);
         } else {
           await prompts.log.message('Directory exists and is empty');
@@ -1705,7 +1705,7 @@ class UI {
       `Last Updated:  ${installation.lastUpdated ? new Date(installation.lastUpdated).toLocaleDateString() : 'unknown'}`,
     ];
 
-    await prompts.note(infoLines.join('\n'), 'BMAD Status');
+    await prompts.note(infoLines.join('\n'), 'Wizz Status');
 
     // Module versions
     await this.displayModuleVersions(modules, availableUpdates);
@@ -1713,7 +1713,7 @@ class UI {
     // Update summary
     if (availableUpdates.length > 0) {
       await prompts.log.warn(`${availableUpdates.length} update(s) available`);
-      await prompts.log.message('Run \'bmad install\' and select "Quick Update" to update');
+      await prompts.log.message('Run \'wizz install\' and select "Quick Update" to update');
     } else {
       await prompts.log.success('All modules are up to date');
     }

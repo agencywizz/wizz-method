@@ -6,7 +6,7 @@ const { BMAD_FOLDER_NAME } = require('../ide/shared/path-utils');
 class InstallPaths {
   static async create(config) {
     const srcDir = getProjectRoot();
-    await assertReadableDir(srcDir, 'BMAD source root');
+    await assertReadableDir(srcDir, 'Wizz source root');
 
     const pkgPath = path.join(srcDir, 'package.json');
     await assertReadableFile(pkgPath, 'package.json');

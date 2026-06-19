@@ -1,4 +1,4 @@
-# BMAD Installer Messages
+# Wizz Method Installer Messages
 # These messages are displayed during installation
 # Edit this file to change what users see during the install process
 
@@ -6,25 +6,21 @@
 startMessage: |
   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  Agile AI-Driven Development. Powered by BMad Core and a growing module ecosystem.
+  Agile AI-Driven Development, the Wizz way. Built on BMAD Core and a growing module ecosystem.
   Install official and community modules during setup to customize your experience.
 
   🌟 100% free. 100% open source. Always.
      No paywalls. No gated content. Knowledge shared, not sold.
 
   🌐 CONNECT:
-    Website:   https://bmadcode.com/
-    Discord:   https://discord.gg/gk8jAdXWmj
-    YouTube:   https://www.youtube.com/@BMadCode
-    X:         https://x.com/BMadCode
-    Facebook:  https://facebook.com/@BMadCode
+    Website:   https://method.wizzcomms.com/
 
   ⭐ SUPPORT THE PROJECT:
-    Star us:   https://github.com/bmad-code-org/BMAD-METHOD/
-    Donate:    https://buymeacoffee.com/bmad
-    Corporate sponsorship and speaking inquiries: contact@bmadcode.com
+    Star us:   https://github.com/wizzcomms/wizz-method/
 
-  Docs, blog, and latest updates: https://bmadcode.com/
+  Built on BMAD Core (MIT) by BMad Code — https://github.com/bmad-code-org/BMAD-METHOD
+
+  Docs, and latest updates: https://method.wizzcomms.com/
 
   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 

@@ -168,7 +168,7 @@ class OfficialModules {
         .split('-')
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' '),
-      description: 'BMAD Module',
+      description: 'Wizz Method Module',
       version: '5.0.0',
       source: sourceDescription,
     };
@@ -1426,7 +1426,7 @@ class OfficialModules {
    * @returns {string} Capitalized username\
    */
   getDefaultUsername() {
-    let result = 'BMad';
+    let result = 'Wizz';
     try {
       const os = require('node:os');
       const userInfo = os.userInfo();

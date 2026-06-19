@@ -173,7 +173,7 @@ class ExternalModuleManager {
     const moduleInfo = await this.getModuleByCode(moduleCode);
 
     if (!moduleInfo) {
-      throw new Error(`External module '${moduleCode}' not found in the BMad registry`);
+      throw new Error(`External module '${moduleCode}' not found in the Wizz registry`);
     }
 
     const cacheDir = this.getExternalCacheDir();

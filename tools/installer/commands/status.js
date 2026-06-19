@@ -10,7 +10,7 @@ const ui = new UI();
 
 module.exports = {
   command: 'status',
-  description: 'Display BMAD installation status and module versions',
+  description: 'Display Wizz installation status and module versions',
   options: [],
   action: async (options) => {
     try {
@@ -21,9 +21,9 @@ module.exports = {
       // Check if bmad directory exists
       const fs = require('../fs-native');
       if (!(await fs.pathExists(bmadDir))) {
-        await prompts.log.warn('No BMAD installation found in the current directory.');
+        await prompts.log.warn('No Wizz installation found in the current directory.');
         await prompts.log.message(`Expected location: ${bmadDir}`);
-        await prompts.log.message('Run "bmad install" to set up a new installation.');
+        await prompts.log.message('Run "wizz install" to set up a new installation.');
         process.exit(0);
         return;
       }
@@ -32,8 +32,8 @@ module.exports = {
       const manifestData = await manifest._readRaw(bmadDir);
 
       if (!manifestData) {
-        await prompts.log.warn('No BMAD installation manifest found.');
-        await prompts.log.message('Run "bmad install" to set up a new installation.');
+        await prompts.log.warn('No Wizz installation manifest found.');
+        await prompts.log.message('Run "wizz install" to set up a new installation.');
         process.exit(0);
         return;
       }
