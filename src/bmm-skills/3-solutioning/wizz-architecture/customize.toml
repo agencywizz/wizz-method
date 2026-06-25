@@ -73,7 +73,9 @@ doc_standards = [
 # Examples (set in team/user override TOML):
 #   "When choosing a datastore, consult corp:platform_catalog before recommending one."
 #   "For current library versions, query corp:artifact_registry before web search."
-external_sources = []
+external_sources = [
+  "For current library/framework docs, APIs, and versions, consult Context7 before web search: call resolve-library-id with the library name, then query-docs with the returned /org/project id and a specific question. If Context7 is unavailable, tell the user once that they can enable it with `npx ctx7 setup`, then fall back to web research and note the gap.",
+]
 
 # External-handoff routing applied at Finalize to push outputs beyond local files (Confluence,
 # Notion, ticket systems). Each entry names the MCP tool, the destination, and required fields.
