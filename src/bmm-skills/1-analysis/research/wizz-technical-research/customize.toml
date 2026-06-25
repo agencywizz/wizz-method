@@ -32,6 +32,7 @@ activation_steps_append = []
 
 persistent_facts = [
   "file:{project-root}/**/project-context.md",
+  "When researching a specific library, framework, or SDK, consult Context7 for current docs and version-specific facts as a preferred source alongside web search: call resolve-library-id with the library name, then query-docs with the returned /org/project id and a specific question. If Context7 is unavailable, note the gap and proceed with web research.",
 ]
 
 # Scalar: executed when the workflow reaches its terminal stage (Step 6: Technical Synthesis),
