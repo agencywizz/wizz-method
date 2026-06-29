@@ -51,6 +51,18 @@ Se RTK estiver disponível: confirme internamente e prossiga. O hook `~/.claude/
 
 Classifique a intenção principal. Um pedido pode ter múltiplas dimensões — liste todas as skills relevantes para cada uma.
 
+## Passo 2.5: Sinal de complexidade — escalar pro maestro?
+
+Antes de listar candidatas, avalie 4 fatores (sinal compartilhado com `wizz-maestro` e `wizz-quick-dev`):
+
+1. **Áreas** — 1 só, ou várias?
+2. **Passos** — pontual, ou multi-passo?
+3. **Planejamento** — dá pra ir direto, ou precisa planejar antes?
+4. **Artefato + memória** — gera entregável que merece registro no cerebro?
+
+- **2+ fatores "altos" E o projeto tem Wizz Method instalado** (existe `{project-root}/_wizz/`): **escale pro `wizz-maestro`** em vez de disparar skills soltas. Ele orquestra a sequência entre áreas e mantém o dever de memória. Invoque-o via `Skill` e pare aqui.
+- **Caso contrário** (pedido flat, fora de projeto Wizz, ou 0–1 fatores altos): siga o fluxo normal de candidatas abaixo. Você é a porta de descoberta global/flat.
+
 ## Passo 3: Apresentar candidatas (fora do Plan Mode)
 
 Use `AskUserQuestion` para apresentar as skills encontradas e perguntar quais disparar:
