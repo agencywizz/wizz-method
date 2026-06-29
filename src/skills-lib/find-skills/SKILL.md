@@ -1,11 +1,13 @@
 ---
 name: find-skills
-description: Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skill that can...", or express interest in extending capabilities. This skill should be used when the user is looking for functionality that might exist as an installable skill.
+description: Helps users discover and install agent skills OR MCP servers when they ask questions like "how do I do X", "find a skill for X", "adicione essa skill", "adicione esse MCP", "is there a skill/mcp that can...", or express interest in extending capabilities. Use when the user is looking for functionality that might exist as an installable skill or MCP server.
 ---
 
-# Find Skills
+# Find Skills (e MCPs)
 
-This skill helps you discover and install skills from the open agent skills ecosystem.
+This skill helps you discover and install **skills** from the open agent skills ecosystem AND configure **MCP servers** that extend the agent with real tool access. When a request needs a capability you don't have, the missing piece is almost always one of these two — a skill (knowledge/workflow) or an MCP (live tool/API access).
+
+> Skill = conhecimento/fluxo (texto que o agente segue). MCP = acesso real a ferramenta/API (rodar SQL, dirigir browser, gerir ads). Se o pedido precisa AGIR num sistema externo, é MCP; se precisa SABER COMO, é skill.
 
 ## When to Use This Skill
 
@@ -131,3 +133,49 @@ I can still help you with this task directly! Would you like me to proceed?
 If this is something you do often, you could create your own skill:
 npx skills init my-xyz-skill
 ```
+
+## Adicionar um MCP Server
+
+Quando o pedido precisa de **acesso real a uma ferramenta/API** (rodar SQL, dirigir um browser, gerir anúncios, buscar docs de lib atualizadas), o que falta é um **MCP**, não uma skill.
+
+### Passo 1: Checar o que já existe
+
+```bash
+claude mcp list
+```
+
+### Passo 2: Ver o registry do Wizz Method (fonte única)
+
+Se o projeto tem Wizz Method instalado, o `skills-registry.yaml` já mapeia os MCPs recomendados por área (campos `mcps:` e `mcp_utility:`). Resolva o caminho na ordem:
+
+1. `{project-root}/_wizz/_config/skills-registry.yaml`
+2. `{project-root}/skills-registry.yaml`
+
+Cada entrada traz `id`, `when` e o bloco `server` (command/args/env) pronto. Prefira esse mapa antes de inventar config.
+
+### Passo 3: Adicionar o MCP
+
+```bash
+# Sintaxe geral (Claude Code):
+claude mcp add <id> [-e VAR=valor ...] -- <command> [args...]
+
+# Exemplos comuns:
+claude mcp add context7 -- npx -y @upstash/context7-mcp
+claude mcp add playwright -- npx -y @playwright/mcp@latest
+claude mcp add magic -e API_KEY=$MAGIC_API_KEY -- npx -y @21st-dev/magic
+claude mcp add supabase -e SUPABASE_ACCESS_TOKEN=$SUPABASE_ACCESS_TOKEN -- npx -y @supabase/mcp-server-supabase@latest
+```
+
+Ou edite o `.mcp.json` do projeto (merge aditivo, nunca apague servers existentes):
+
+```json
+{ "mcpServers": { "context7": { "command": "npx", "args": ["-y", "@upstash/context7-mcp"] } } }
+```
+
+### Passo 4: Secrets
+
+NUNCA escreva token real em arquivo commitado. Use variável de ambiente (`-e VAR=$VAR`) ou placeholder `${VAR}` no `.mcp.json` e peça pro usuário exportar a variável. Avise quais variáveis o MCP exige.
+
+### Quando não há MCP pronto
+
+Diga que não existe MCP conhecido pra isso e ofereça resolver com as ferramentas atuais (ex: `agent-browser` no lugar do MCP playwright, ou chamadas diretas de API).

@@ -81,20 +81,23 @@ Quais você quer que eu dispare? (pode selecionar todas)
 
 Invoque cada skill aprovada usando a ferramenta `Skill`. Execute em paralelo quando as skills forem independentes entre si.
 
-## Passo 5: Fallback — skill faltante
+## Passo 5: Fallback — skill OU MCP faltante
 
-Se nenhuma skill instalada mapear o pedido:
+Se nenhuma skill/MCP instalado mapear o pedido, primeiro **classifique o que falta**:
+- Precisa SABER COMO (conhecimento/fluxo) → falta uma **skill**.
+- Precisa AGIR num sistema externo (rodar SQL, dirigir browser, gerir ads, docs de lib) → falta um **MCP**.
 
-1. Declare: "Não tenho skill instalada para [intenção]."
-2. Invoque `find-skills` e rode `npx skills find <termo>`.
-3. Apresente 2-3 candidatas com fonte e proponha instalação:
+1. Declare: "Não tenho [skill|MCP] instalado para [intenção]."
+2. Invoque `find-skills` (cobre os dois caminhos):
+   - **Skill:** `npx skills find <termo>` → apresente 2-3 candidatas com fonte.
+   - **MCP:** cheque `claude mcp list`; consulte os MCPs recomendados no `skills-registry.yaml` (`mcps:`/`mcp_utility:`); proponha `claude mcp add <id> -- <cmd>`.
+3. Proponha a instalação e peça confirmação:
    ```
-   Encontrei candidatas no marketplace:
-   - npx skills add <pkg1> — descrição
-   - npx skills add <pkg2> — descrição
-   Instalo alguma?
+   Skill: npx skills add <pkg> — descrição
+   MCP:   claude mcp add <id> -- npx -y <pacote> — descrição
+   Instalo?
    ```
-4. Se o usuário aprovar: `npx skills add <pkg>` e tente novamente.
+4. Se aprovado: instale e tente rotear de novo. Secrets sempre via env/placeholder, nunca token real.
 
 ---
 
@@ -206,23 +209,29 @@ Após confirmação, dispare todas as skills selecionadas em paralelo quando pos
 
 ---
 
-## Skill Faltante — Protocolo de Busca
+## Skill ou MCP Faltante — Protocolo de Busca
 
-Quando nenhuma skill do ecossistema instalado cobrir o pedido:
+Quando nenhuma skill/MCP do ecossistema instalado cobrir o pedido, **classifique o que falta** (skill = conhecimento/fluxo; MCP = acesso real a ferramenta/API) e siga o caminho:
+
+**Falta uma SKILL:**
 
 1. **Informe:** "Não tenho skill instalada para [intenção detectada]."
-2. **Invoque `find-skills`** para buscar no marketplace:
-   ```bash
-   npx skills find "<termo>"
-   ```
+2. **Invoque `find-skills`** → `npx skills find "<termo>"`.
 3. **Apresente candidatas** com nome, fonte e breve descrição.
-4. **Proponha instalação** com confirmação do usuário:
-   ```bash
-   npx skills add <nome-da-skill>
-   ```
-5. Após instalação, tente rotear novamente.
+4. **Proponha instalação** com confirmação: `npx skills add <nome-da-skill>`.
+5. Após instalar, tente rotear novamente.
 
 Fontes: anthropics/skills, superpowers-marketplace, skill-codex, claude-mem, skills.sh.
+
+**Falta um MCP:**
+
+1. **Informe:** "Esse pedido precisa de acesso real via MCP, que não está configurado."
+2. **Cheque o que existe:** `claude mcp list`.
+3. **Consulte o registry** (`skills-registry.yaml` → `mcps:` por área e `mcp_utility:`): o `server` (command/args/env) já vem pronto. Resolva em `{project-root}/_wizz/_config/skills-registry.yaml` ou `{project-root}/skills-registry.yaml`.
+4. **Proponha:** `claude mcp add <id> [-e VAR=$VAR] -- <command> [args]` (ou merge aditivo no `.mcp.json`). Secrets sempre via env/placeholder.
+5. Após configurar, tente rotear novamente. Se não houver MCP pronto, ofereça resolver com as ferramentas atuais.
+
+MCPs comuns no ecossistema: context7 (docs de libs), magic/21st (UI), supabase (Postgres), playwright (browser E2E), meta-ads (Meta), exa (pesquisa).
 
 ---
 

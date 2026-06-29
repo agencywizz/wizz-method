@@ -17,6 +17,7 @@ const {
   bundledTargetWarnings,
 } = require('./modules/channel-plan');
 const channelResolver = require('./modules/channel-resolver');
+const { resolveMcps } = require('./modules/mcp-config');
 const prompts = require('./prompts');
 const { parseSetEntries } = require('./set-overrides');
 
@@ -430,6 +431,7 @@ class UI {
 
     let toolSelection = await this.promptToolSelection(confirmedDirectory, options);
     const selectedAreas = await this.selectSkillAreas(selectedModules, options);
+    const mcpPlan = await this.selectMcps(selectedModules, selectedAreas, options);
     const { moduleConfigs, setOverrides } = await this.collectModuleConfigs(confirmedDirectory, selectedModules, {
       ...options,
       channelOptions,
@@ -455,6 +457,7 @@ class UI {
       ides: toolSelection.ides,
       skipIde: toolSelection.skipIde,
       selectedAreas,
+      mcpPlan,
       coreConfig: moduleConfigs.core || {},
       moduleConfigs: moduleConfigs,
       setOverrides,
@@ -527,6 +530,67 @@ class UI {
     // Empty or full selection both collapse to the "all areas" sentinel.
     if (!selected || selected.length === 0 || selected.length === areaKeys.length) return [];
     return selected;
+  }
+
+  /**
+   * Prompt for which recommended MCP servers to configure for the chosen areas.
+   * Reads the same skills-registry.yaml the installer/maestro use, so the offered
+   * servers never diverge from routing. Returns a split plan:
+   *   - toWrite: entries to MERGE into the project `.mcp.json` (placeholder secrets)
+   *   - toRecommend: entries to merely print as `claude mcp add ...` (nothing lost)
+   * Non-interactive (--yes/CI) writes nothing and recommends everything, so the
+   * install never touches MCP config without an explicit choice.
+   * @param {string[]} selectedModules - Modules chosen for install
+   * @param {string[]} selectedAreas - Areas resolved by selectSkillAreas ([]=all)
+   * @param {Object} options - Command-line options
+   * @returns {Promise<{toWrite: Object[], toRecommend: Object[]}>}
+   */
+  async selectMcps(selectedModules, selectedAreas, options = {}) {
+    if (!selectedModules.includes('wizz')) return { toWrite: [], toRecommend: [] };
+
+    const registry = this._loadSkillsRegistry();
+    const resolved = resolveMcps(registry, selectedAreas);
+    if (resolved.length === 0) return { toWrite: [], toRecommend: [] };
+
+    const byId = new Map(resolved.map((m) => [m.id, m]));
+    const split = (writeIds) => {
+      const writeSet = new Set(writeIds);
+      return {
+        toWrite: resolved.filter((m) => writeSet.has(m.id)),
+        toRecommend: resolved.filter((m) => !writeSet.has(m.id)),
+      };
+    };
+
+    // CLI: --mcps a,b,c | 'all' | 'none'
+    if (options.mcps !== undefined) {
+      const raw = String(options.mcps)
+        .split(',')
+        .map((s) => s.trim())
+        .filter(Boolean);
+      if (raw.includes('none')) return split([]);
+      if (raw.includes('all')) return split(resolved.map((m) => m.id));
+      const unknown = raw.filter((id) => !byId.has(id));
+      if (unknown.length > 0) {
+        await prompts.log.warn(`MCPs desconhecidos ignorados: ${unknown.join(', ')}`);
+      }
+      return split(raw.filter((id) => byId.has(id)));
+    }
+
+    // Non-interactive: don't touch config, just recommend everything.
+    if (options.yes) return { toWrite: [], toRecommend: resolved };
+
+    const selected = await prompts.multiselect({
+      message: 'Quais MCPs configurar no .mcp.json? (não marcados viram comando pra rodar depois)',
+      options: resolved.map((m) => ({
+        label: m.id,
+        value: m.id,
+        hint: m.when,
+      })),
+      initialValues: resolved.map((m) => m.id),
+      required: false,
+    });
+
+    return split(selected || []);
   }
 
   /**

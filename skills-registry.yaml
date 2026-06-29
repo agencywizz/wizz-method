@@ -8,6 +8,15 @@
 # Mantê-los lendo o MESMO arquivo garante que roteamento e instalação nunca divirjam.
 #
 # Skills vivem em src/skills-lib/<id>/. Squads em src/squads/<id>/ (via wizz-party-mode).
+#
+# MCPs (Model Context Protocol servers) também são declarados aqui, por área, no
+# campo `mcps:` (e `mcp_utility:` para os cross-cutting). Cada entrada tem:
+#   id      — nome do server no config da IDE (chave em mcpServers)
+#   when    — quando esse MCP ajuda (desambigua, igual ao `when` das skills)
+#   server  — { command, args, env } gravado no .mcp.json pelo installer
+# Secrets em `env` são SEMPRE placeholders `${VAR}` — o installer nunca escreve
+# token real. O installer instala/recomenda os MCPs das áreas escolhidas; o
+# maestro/router oferece o MCP certo em runtime. Mesma fonte única das skills.
 
 version: 1
 
@@ -41,6 +50,14 @@ areas:
         when: "Converter design (Stitch MCP) em componentes React/Vite."
       - id: decision-maker
         when: "Brief visual inicial: força 6 decisões de estética + 3 lógicas. Entra no kickoff, antes de construir."
+    mcps:
+      - id: magic
+        when: "Gerar/refinar componentes prontos via 21st.dev (UI builder, inspiration, refiner)."
+        server:
+          command: npx
+          args: ["-y", "@21st-dev/magic"]
+          env:
+            API_KEY: "${MAGIC_API_KEY}"
     references:
       - "references/premium-agency-rules.md (regras $150k-tier, importadas por impeccable/huashu no modo high-end)"
 
@@ -131,6 +148,14 @@ areas:
         when: "Gerar/iterar criativos e headlines de anúncio em escala (RSA, variações)."
       - id: analytics-tracking
         when: "Tracking de conversão pros anúncios (compartilhada com growth)."
+    mcps:
+      - id: meta-ads
+        when: "Gestão real de campanha Meta/Facebook/Instagram via API (criar/editar/medir ads)."
+        server:
+          command: npx
+          args: ["-y", "mcp-meta-ads"]
+          env:
+            META_ACCESS_TOKEN: "${META_ACCESS_TOKEN}"
 
   architect:
     agent: wizz-agent-architect
@@ -154,6 +179,14 @@ areas:
         when: "Dependências/packages, vulnerabilidades, npm audit."
       - id: supabase-postgres-best-practices
         when: "Performance e boas práticas de Postgres/Supabase (queries, schema, RLS)."
+    mcps:
+      - id: supabase
+        when: "Operar Supabase de verdade: rodar SQL, migrations, inspecionar schema/RLS, logs."
+        server:
+          command: npx
+          args: ["-y", "@supabase/mcp-server-supabase@latest"]
+          env:
+            SUPABASE_ACCESS_TOKEN: "${SUPABASE_ACCESS_TOKEN}"
 
   qa:
     agent: wizz-qa
@@ -162,7 +195,9 @@ areas:
       - id: adversarial-reviewer
         when: "Caçar bugs adversarialmente, stress-test de PR, 'tear this apart'. (Global; o engine usa wizz-review-adversarial-general por dentro.)"
       - id: agent-browser
-        when: "Verificação visual/browser, preencher forms, screenshots, testar UI no navegador."
+        when: "Verificação visual/browser, preencher forms, screenshots, testar UI no navegador. CLI já instalado (não é MCP); browser SEMPRE via agent-browser, nunca Playwright."
+    # qa NÃO declara mcps: verificação de browser é via agent-browser (CLI/skill),
+    # não via MCP. Não usar o MCP do Playwright.
 
   analyst:
     agent: wizz-agent-analyst
@@ -172,6 +207,14 @@ areas:
         when: "Kickoff LEVE de engenharia: stack, personas, glossário, princípios, estrutura de pastas, checklist. Atalho sem cerimônia de PRD."
       - id: implementation-planner
         when: "Plano técnico de implementação de site/app premium pós-direção aprovada."
+    mcps:
+      - id: exa
+        when: "Pesquisa web/prior-art durante planejamento (web search, descoberta de fontes)."
+        server:
+          command: npx
+          args: ["-y", "exa-mcp-server"]
+          env:
+            EXA_API_KEY: "${EXA_API_KEY}"
 
   memoria:
     agent: wizz-memoria
@@ -192,6 +235,16 @@ utility:
     when: "Empacotar um briefing mais completo/estruturado pra mandar a outro agente ou skill."
   - id: wizz-router
     when: "Roteador global/flat: descobre skills quando não se sabe a área; escala pro maestro se multi-área."
+
+# ─────────────────────────────────────────────────────────────────────────────
+# MCP_UTILITY — MCPs cross-cutting, oferecidos independente da área escolhida.
+# ─────────────────────────────────────────────────────────────────────────────
+mcp_utility:
+  - id: context7
+    when: "Docs atualizadas de qualquer lib/framework/SDK (React, Next, Prisma, Tailwind...). Útil em todo dev."
+    server:
+      command: npx
+      args: ["-y", "@upstash/context7-mcp"]
 
 # ─────────────────────────────────────────────────────────────────────────────
 # SQUADS — painéis consultivos de personas (rodam via wizz-party-mode).

@@ -8,6 +8,7 @@ class Config {
     modules,
     ides,
     selectedAreas,
+    mcpPlan,
     skipPrompts,
     verbose,
     actionType,
@@ -23,6 +24,11 @@ class Config {
     // Global-skills areas the user chose to install (from skills-registry.yaml).
     // Empty means "all areas" when skills-lib is installed; see installSkillsLib.
     this.selectedAreas = Object.freeze([...(selectedAreas || [])]);
+    // MCP plan resolved from the registry for the chosen areas:
+    //   toWrite     — merged into the project .mcp.json (placeholder secrets)
+    //   toRecommend — printed as `claude mcp add ...` for the user to run later
+    // Empty/absent on quick-update or non-wizz installs. See modules/mcp-config.js.
+    this.mcpPlan = mcpPlan || { toWrite: [], toRecommend: [] };
     this.skipPrompts = skipPrompts;
     this.verbose = verbose;
     this.actionType = actionType;
@@ -55,6 +61,7 @@ class Config {
       modules,
       ides: userInput.skipIde ? [] : [...(userInput.ides || [])],
       selectedAreas: userInput.selectedAreas || [],
+      mcpPlan: userInput.mcpPlan || { toWrite: [], toRecommend: [] },
       skipPrompts: userInput.skipPrompts || false,
       verbose: userInput.verbose || false,
       actionType: userInput.actionType,
