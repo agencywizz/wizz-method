@@ -4,6 +4,7 @@ const { Manifest } = require('./manifest');
 const { OfficialModules } = require('../modules/official-modules');
 const { installSkillsLib } = require('../modules/skills-lib');
 const { writeMcpConfig, renderAddCommand } = require('../modules/mcp-config');
+const { installClis, renderInstallCommand } = require('../modules/cli-config');
 const { IdeManager } = require('../ide/manager');
 const { FileOps } = require('../file-ops');
 const { Config } = require('./config');
@@ -359,6 +360,40 @@ class Installer {
             }
           } catch (error) {
             await prompts.log.warn(`Falha ao configurar MCPs: ${error.message}`);
+          }
+
+          // Install/recommend the CLIs the agents shell out to (agent-browser,
+          // rtk). The ui already detected what's present and split the rest into
+          // install-now vs recommend; here we run the chosen install commands and
+          // print the rest. Install runs system commands (npm install -g, curl |
+          // sh) — a failure warns and never aborts the install. CLIs are not
+          // tracked in installedFiles (they live outside the project tree).
+          const cliPlan = config.cliPlan || { toInstall: [], toRecommend: [], alreadyInstalled: [] };
+          try {
+            const alreadyInstalled = cliPlan.alreadyInstalled || [];
+            if (alreadyInstalled.length > 0) {
+              await prompts.log.info(`CLIs já instalados (mantidos): ${alreadyInstalled.map((c) => c.id).join(', ')}`);
+            }
+            const toInstall = cliPlan.toInstall || [];
+            if (toInstall.length > 0) {
+              message('Installing CLIs...');
+              const cliResult = await installClis({ clis: toInstall });
+              if (cliResult.installed.length > 0) {
+                addResult('CLIs', 'ok', `instalados: ${cliResult.installed.join(', ')}`);
+              }
+              for (const f of cliResult.failed) {
+                await prompts.log.warn(
+                  `Falha ao instalar CLI ${f.id}: ${f.error}. Rode manualmente: ${renderInstallCommand(toInstall.find((c) => c.id === f.id) || {})}`,
+                );
+              }
+            }
+            const toRecommend = cliPlan.toRecommend || [];
+            if (toRecommend.length > 0) {
+              const lines = toRecommend.map((c) => `  ${renderInstallCommand(c)}`).join('\n');
+              await prompts.log.info(`CLIs recomendados (rode quando quiser):\n${lines}`);
+            }
+          } catch (error) {
+            await prompts.log.warn(`Falha ao configurar CLIs: ${error.message}`);
           }
         }
 

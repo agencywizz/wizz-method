@@ -198,6 +198,11 @@ areas:
         when: "Verificação visual/browser, preencher forms, screenshots, testar UI no navegador. CLI já instalado (não é MCP); browser SEMPRE via agent-browser, nunca Playwright."
     # qa NÃO declara mcps: verificação de browser é via agent-browser (CLI/skill),
     # não via MCP. Não usar o MCP do Playwright.
+    clis:
+      - id: agent-browser
+        when: "Dirigir um browser real pra E2E/verificação: navegar, clicar, preencher form, screenshot, console. É CLI, não MCP."
+        check: "agent-browser --version"
+        install: "npm install -g agent-browser"
 
   analyst:
     agent: wizz-agent-analyst
@@ -245,6 +250,18 @@ mcp_utility:
     server:
       command: npx
       args: ["-y", "@upstash/context7-mcp"]
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CLIs — ferramentas de linha de comando que os agentes chamam direto (não são
+# MCP nem skill). O installer DETECTA se já estão instaladas (check) e, por
+# padrão, só RECOMENDA o comando de install; instala de verdade apenas se o
+# usuário marcar. `clis:` por área; `cli_utility:` para as cross-cutting.
+# ─────────────────────────────────────────────────────────────────────────────
+cli_utility:
+  - id: rtk
+    when: "Token economy: proxy que corta 60-90% de tokens em comandos de dev. O wizz-router assume RTK ativo (Passo 0). Útil em todo o ecossistema."
+    check: "rtk --version"
+    install: "curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # SQUADS — painéis consultivos de personas (rodam via wizz-party-mode).

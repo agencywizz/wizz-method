@@ -27,6 +27,10 @@ module.exports = {
       'Comma-separated MCP ids to write to .mcp.json for the chosen areas, "all", or "none". Unlisted ones are recommended as `claude mcp add` commands. Only with the wizz module.',
     ],
     [
+      '--clis <clis>',
+      'Comma-separated CLI ids to install for the chosen areas (e.g. "agent-browser,rtk"), "all", or "none". Already-installed ones are skipped; unlisted ones are recommended. Only with the wizz module.',
+    ],
+    [
       '--set <spec>',
       'Set a module config option non-interactively. Spec format: <module>.<key>=<value> (e.g. bmm.project_knowledge=research). Repeatable. Run --list-options to see available keys.',
       (value, prev) => [...(prev || []), value],

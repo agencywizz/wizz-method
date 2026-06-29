@@ -18,6 +18,7 @@ const {
 } = require('./modules/channel-plan');
 const channelResolver = require('./modules/channel-resolver');
 const { resolveMcps } = require('./modules/mcp-config');
+const { resolveClis, detectClis } = require('./modules/cli-config');
 const prompts = require('./prompts');
 const { parseSetEntries } = require('./set-overrides');
 
@@ -432,6 +433,7 @@ class UI {
     let toolSelection = await this.promptToolSelection(confirmedDirectory, options);
     const selectedAreas = await this.selectSkillAreas(selectedModules, options);
     const mcpPlan = await this.selectMcps(selectedModules, selectedAreas, options);
+    const cliPlan = await this.selectClis(selectedModules, selectedAreas, options);
     const { moduleConfigs, setOverrides } = await this.collectModuleConfigs(confirmedDirectory, selectedModules, {
       ...options,
       channelOptions,
@@ -458,6 +460,7 @@ class UI {
       skipIde: toolSelection.skipIde,
       selectedAreas,
       mcpPlan,
+      cliPlan,
       coreConfig: moduleConfigs.core || {},
       moduleConfigs: moduleConfigs,
       setOverrides,
@@ -587,6 +590,79 @@ class UI {
         hint: m.when,
       })),
       initialValues: resolved.map((m) => m.id),
+      required: false,
+    });
+
+    return split(selected || []);
+  }
+
+  /**
+   * Prompt for which recommended CLIs to install for the chosen areas.
+   * Reads the same skills-registry.yaml as the installer/maestro. CLIs are the
+   * tools agents shell out to (agent-browser, rtk), not MCP servers. We DETECT
+   * what's already installed first (never reinstall), then offer the missing
+   * ones. Install runs a system command (npm install -g, curl | sh), so the
+   * default is RECOMMEND-only: nothing is installed without an explicit choice.
+   * Returns a split plan:
+   *   - toInstall: entries whose `install` command we run now
+   *   - toRecommend: entries we merely print as a command to run later
+   * Already-installed CLIs go to neither (reported as present, no action).
+   * @param {string[]} selectedModules - Modules chosen for install
+   * @param {string[]} selectedAreas - Areas resolved by selectSkillAreas ([]=all)
+   * @param {Object} options - Command-line options
+   * @returns {Promise<{toInstall: Object[], toRecommend: Object[], alreadyInstalled: Object[]}>}
+   */
+  async selectClis(selectedModules, selectedAreas, options = {}) {
+    const empty = { toInstall: [], toRecommend: [], alreadyInstalled: [] };
+    if (!selectedModules.includes('wizz')) return empty;
+
+    const registry = this._loadSkillsRegistry();
+    const resolved = resolveClis(registry, selectedAreas);
+    if (resolved.length === 0) return empty;
+
+    // Detect what's already on PATH so we never offer to reinstall it.
+    const detected = await detectClis(resolved);
+    const alreadyInstalled = detected.filter((c) => c.installed);
+    const missing = detected.filter((c) => !c.installed);
+    if (missing.length === 0) return { toInstall: [], toRecommend: [], alreadyInstalled };
+
+    const byId = new Map(missing.map((c) => [c.id, c]));
+    const split = (installIds) => {
+      const installSet = new Set(installIds);
+      return {
+        toInstall: missing.filter((c) => installSet.has(c.id)),
+        toRecommend: missing.filter((c) => !installSet.has(c.id)),
+        alreadyInstalled,
+      };
+    };
+
+    // CLI: --clis a,b,c | 'all' | 'none'
+    if (options.clis !== undefined) {
+      const raw = String(options.clis)
+        .split(',')
+        .map((s) => s.trim())
+        .filter(Boolean);
+      if (raw.includes('none')) return split([]);
+      if (raw.includes('all')) return split(missing.map((c) => c.id));
+      const unknown = raw.filter((id) => !byId.has(id));
+      if (unknown.length > 0) {
+        await prompts.log.warn(`CLIs desconhecidos/já instalados ignorados: ${unknown.join(', ')}`);
+      }
+      return split(raw.filter((id) => byId.has(id)));
+    }
+
+    // Non-interactive: don't run system commands, just recommend everything.
+    if (options.yes) return { toInstall: [], toRecommend: missing, alreadyInstalled };
+
+    // Default UNCHECKED: install runs a system command, so opt-in only.
+    const selected = await prompts.multiselect({
+      message: 'Quais CLIs instalar agora? (não marcados viram comando pra rodar depois)',
+      options: missing.map((c) => ({
+        label: c.id,
+        value: c.id,
+        hint: c.when,
+      })),
+      initialValues: [],
       required: false,
     });
 
